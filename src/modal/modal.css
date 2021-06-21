@@ -1,0 +1,13 @@
+.modal-body{
+ flex:1;
+ width: 600px;
+ height: 600px;
+ float: right;
+}
+
+.box{
+ height: 300px;
+ width: 300px;
+ 
+ background-color: aqua;
+}

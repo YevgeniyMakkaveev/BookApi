@@ -1,17 +1,33 @@
 export default class GetBooks{
  constructor(){
 
-this._apiSearch=`http://openlibrary.org/search.json?q=`
+this._apiSearch=`http://openlibrary.org/search.json?q=` 
+this._baseApi=`https://openlibrary.org/`
 
  }
 async getResource(url) {
-  const res = await fetch(`${this._apiBase}${url}`);
+  const res = await fetch(`${this._apiSearch}${url}`);
   if (!res.ok) {
    throw new Error(`Could not fetch ${url}, recieved ${res.status}`)
   }
   return await res.json()
  }
 
+ async getSingleBook(url){
+   const res = await fetch(`${this._baseApi}${url}`)
+   if (!res.ok) {
+   throw new Error(`Could not fetch data, recieved ${res.status}`)
+ }
+ return await res.json()
+ }
+
+ async getSearchRes(url){
+   const res = await fetch(`${this._apiSearch}${url}`)
+   if (!res.ok) {
+     throw new Error(`Could not fetch data, recieved ${res.status}`)
+   }
+   return await res.json()
+ }
  
  async getLotrApi() {
  const res = await fetch(`${this._apiSearch}the+lord+of+the+rings`)
@@ -25,9 +41,6 @@ async getPlaceholder() {
   return await res.json()
 }
 
-async getReadble(){
-const get = await this.getLotrApi()
-return get.products.map(item => this.transformData(item.data))
-}
+
 
 }

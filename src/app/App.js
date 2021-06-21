@@ -1,70 +1,58 @@
 import React,{ Component } from 'react';  
 import GetBooks from '../services/getBook';
 import './App.css';
-import Card from '../card/card';
+import BookCard from '../card';
 import SearchPannel from '../header';
+import Modal from '../modal/modal';
 
 export default class App extends Component {
   constructor(props){
     super(props)
      this.state={
-    booklist: null
+   data:[],
+   searchField: '',
+   selectedId: null,
+   showModal: false,
+   error: false
   }
+  this.showModal=this.showModal.bind(this)
+  this.hideModal=this.hideModal.bind(this)
+  this.getSearchRes=this.getSearchRes.bind(this)
+  this.getBookId=this.getBookId.bind(this)
   }
   getBook=new GetBooks();
  
 
-componentDidMount = () => {
-  if (this.state.booklist == null) {
-    this.getBook
-      .getLotrApi()
-      .then((List) => {
-        this.setState({
-          booklist: List.docs
-        });
-      });
-    console.log(this.state.booklist);
+  showModal =()=>{
+    this.setState({showModal: true})
+  }
+  hideModal =()=>{
+    this.setState({showModal: false})
   }
 
-}
+  getSearchRes=(res)=> {
+    this.setState({searchField: res})
+    console.log(this.state)
+  }
 
-async getTest() {
-  const res = await fetch(`https://anapioficeandfire.com/api/characters?page=5`)
-  return await res.json()
-  //НЕ ЗАБЫВАЙ О ()!
-}
- 
-renderIt =(arr)=>{
-return(arr.map((item)=>{
-  console.log(item.title)
+getBookId=(res)=>{
+  this.setState({
+        selectedId: res  })
+      console.log(this.state)}
 
-  return(<div>
-   <img src={`http://covers.openlibrary.org/b/OLID/${item.cover_edition_key}-M.jpg`} alt='Обложка поломалась'/> 
-   <div className='title'>
-   <h3>{item.title}</h3>
-   <h3>{item.first_publish_year}</h3>
-   </div>
-   <div className='overview'>
-        
-   </div>
- </div>
-)
-  
-}))
-}
 
 
   render(){
-   if(!this.state.booklist){
-            return <span className="selector" > Грузимся</span>
-        }
-    const list= this.state.booklist.slice(0,10)  
-    const test = this.renderIt(list)
+ const{showModal}=this.state
+ const renderModal =showModal? <Modal/>:null
     
   return (  
       <div>
-        <SearchPannel/>
-        {test}
+        <SearchPannel  getSearchRes={this.getSearchRes} />
+        <button onClick={this.showModal}> Покажись, модальное</button>
+        <button onClick={this.hideModal}> Спрячься, модальное</button>
+        <BookCard getBookId={this.getBookId}/>
+        {renderModal}
       
       </div>
       

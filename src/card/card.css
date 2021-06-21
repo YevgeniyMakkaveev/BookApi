@@ -1,0 +1,11 @@
+.cards-nest{
+flex: 2;
+ flex-direction: column;
+ float: left;
+ width: 500px;
+}
+.single-card{
+  margin: 5px;
+  border: solid;
+  border-color: black 2px;
+}
