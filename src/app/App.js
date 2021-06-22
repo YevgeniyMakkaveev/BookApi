@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';  
+import React,{ Component} from 'react';  
 import GetBooks from '../services/getBook';
 import './App.css';
 import BookCard from '../card';
@@ -9,7 +9,7 @@ export default class App extends Component {
   constructor(props){
     super(props)
      this.state={
-   data:[],
+   
    searchField: '',
    selectedId: null,
    showModal: false,
@@ -32,27 +32,27 @@ export default class App extends Component {
 
   getSearchRes=(res)=> {
     this.setState({searchField: res})
-    console.log(this.state)
+    console.log('обновлен поиск')
   }
 
 getBookId=(res)=>{
   this.setState({
         selectedId: res  })
-      console.log(this.state)}
+      console.log('получено id книги')}
 
 
 
   render(){
- const{showModal}=this.state
- const renderModal =showModal? <Modal/>:null
+//  const{showModal}=this.state
+//  const renderModal =showModal? <Modal/>:null
     
   return (  
       <div>
         <SearchPannel  getSearchRes={this.getSearchRes} />
-        <button onClick={this.showModal}> Покажись, модальное</button>
-        <button onClick={this.hideModal}> Спрячься, модальное</button>
-        <BookCard getBookId={this.getBookId}/>
-        {renderModal}
+        <button onClick={()=>console.log(this.state)}> Покажись стейт</button>
+        
+        <BookCard getBookId={this.getBookId} searchField={this.state.searchField}/>
+        <Modal seletedBook={this.state.selectedId}/>
       
       </div>
       

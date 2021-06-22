@@ -6,32 +6,31 @@ export default class SearchPannel extends Component {
       state = {
       tearm: ''
     }
-
-
-onSearch =(e)=>{
-  e.preventDefault()
-  const tearm = e.target.value;
-  console.log(tearm)
-  this.props.getSearchRes(tearm)
-}
  
+onImput = (e)=>{
+e.preventDefault();
+const tearm = e.target.value;
+this.setState({
+  tearm
+});
+//тут с таймаута зовем сабмит
+}
+
+  onSubmit = () => {
+     const { tearm } = this.state;
+     this.props.getSearchRes(tearm)
+     this.setState({
+       tearm: ''
+     })
+   }
 
 render() {
+  const {tearm} = this.state;
  return(
-<div>
-  <form 
-  onSubmit={this.onSearch}>
- <input 
-  type ='text'
-  placeholder = 'Поиск'
-  
-  onChange={this.onSearch}
-  
- 
-  />
-<button>Тестовая кнопка</button>
- </form>
-</div>
+           <div >
+               <input  type="text" onChange={this.onImput} value={tearm}/>
+               <input className="button" type="submit" onClick={this.onSubmit} value="Искать книги"/>
+           </div>
   )
 }
 
