@@ -12,8 +12,8 @@ export default class App extends Component {
    
    searchField: '',
    selectedId: null,
-   showModal: false,
    selectedAuthour: null,
+   showModal: false,
    selectedYear: null,
    error: false
   }
@@ -29,7 +29,8 @@ export default class App extends Component {
     this.setState({showModal: true})
   }
   hideModal =()=>{
-    this.setState({showModal: false})
+    this.setState({selectedId: null })
+  console.log(()=>this.state)
   }
 
   getSearchRes=(res)=> {
@@ -41,21 +42,23 @@ getBookId=(resId, resName, resYear)=>{
   this.setState({
         selectedId: resId,
         selectedAuthour: resName,
-        selectedYear: resYear})
+        selectedYear: resYear,
+        showModal: true
+      })
       console.log('получено id книги')}
 
 
 
   render(){
-//  const{showModal}=this.state
-//  const renderModal =showModal? <Modal/>:null
+   
+
     
   return (  
       <div className="App">
         <SearchPannel  getSearchRes={this.getSearchRes} /> 
         <BookCard getBookId={this.getBookId} searchField={this.state.searchField}/>
-        <Modal seletedBook={this.state.selectedId} selectedAuthour={this.state.selectedAuthour} selectedYear={this.state.selectedYear}/>
-      
+        
+      <Modal seletedBook={this.state.selectedId} selectedAuthour={this.state.selectedAuthour} selectedYear={this.state.selectedYear} onHide={this.hideModal}/>
       </div>
       
    

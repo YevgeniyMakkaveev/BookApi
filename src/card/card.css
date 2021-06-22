@@ -2,26 +2,28 @@
 .cards-nest {
 margin-top: 2rem;
 display: block;
- float: left;
- max-width: 1500px;
-
+ align-items: center;
+ justify-content: center;
 font-family: 'fantasy', sans-serif;
 color: #343a40;
 background-size: auto
 }
 .single-card{
-   
-  max-width: 800px;
+  width: 80%;
   max-height: 150px;
-  background-color: #ddbea9;
    border-radius: 20px;
-   justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   display: flex;
   padding: 2rem;
   margin: 0 1.5rem;
   margin-bottom: 2rem;
    box-shadow: 0 5px 10px rgba(54, 47, 3, 0.05),
    0 15px 40px rgba(0, 0, 0, 0.1);
+   cursor: pointer;
+}
+.single-card:hover{
+background-color: #ddbea9;
 }
 .card-img{
   border: bisque, solid;
@@ -32,7 +34,6 @@ background-size: auto
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    
     padding: 0;
     margin-left: 5rem;
   }

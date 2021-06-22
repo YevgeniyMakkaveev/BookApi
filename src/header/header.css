@@ -3,7 +3,7 @@
 }
 
 .title{
- 	font-size: calc(2.8em + 2.6vw);
+ 	font-size: calc(2.5em + 2.5vw);
   color: brown;
  	font-weight: 700;
  	letter-spacing: .01em;
@@ -16,14 +16,20 @@
 }
 .submit-button{
 padding: 1.5rem 1.5rem;
-background-color: coral;
-border-radius: 70%;
+background-color:white;
+border-radius: 55%;
+background:coral ;
 border: blanchedalmond 4px;
 color: black;
   box-shadow: 0 5px 4px rgba(100, 107, 3, 0.05),
   0 5px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   margin:  1rem;
+}
+
+.submit-button:hover{
+color: #ffffff ;
+background: red;
 }
 
 .text-field{

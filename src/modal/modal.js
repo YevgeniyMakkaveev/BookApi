@@ -1,19 +1,23 @@
 import React, {Component} from 'react'
 import GetBooks from '../services/getBook';
 import './modal.css'
+import Spinner from '../spinner/';
+import deafaultImg from '../img/book-template.jpg'
 
 export default class Modal extends Component {
  getBook=new GetBooks()
  state ={
-  book: null
+  book: null,
+  visible: true
  }
 
  
     componentDidUpdate(prevProp){
         if (this.props.seletedBook!== prevProp.seletedBook) {
             this.updateSelected()
-        }
+        }  
     }
+    
 
     updateSelected() {
      const {
@@ -22,8 +26,9 @@ export default class Modal extends Component {
      if (!seletedBook) {
       return
      }
+     this.setState({visible: true})
      this.getBook.getSingleBook(seletedBook).then((book) => {
-      this.setState({book})})
+      this.setState({book: book})})
      console.log(this.state.book)
     }
 
@@ -37,25 +42,36 @@ export default class Modal extends Component {
      }
     }
 
+    checkImg(img){
+        if (!img) return (deafaultImg)
+        else return(`http://covers.openlibrary.org/b/id/${img[0]}-L.jpg`) 
+        
+    }
+    hideModal =()=>{
+        this.setState({visible: false})
+        this.props.onHide()
+    }
     render() {
-      if (!this.props.seletedBook) {
-       return <span className = "text-test" > Выберете книгу </span>
-      } else if(!this.state.book){return <span className = "modal-body" > Идет загрузка </span> }
+      if (!this.props.seletedBook || !this.state.visible) {
+       return null
+      } else if(!this.state.book){return  <Spinner/> }
 
 const { description,covers, title} = this.state.book
 const{selectedAuthour, selectedYear} = this.props
 let text = this.checkValue(description)
-const img = covers[0]
+const img = this.checkImg(covers)
 console.log(covers)
  
 return(
- <div className="modal-body">
+    <div className="modal-body" onClick={()=>{this.hideModal()}} >
+ <div className="modal-card" >
   <h2>{title}</h2>
-  < img src = {`http://covers.openlibrary.org/b/id/${img}-L.jpg`}alt='Обложка поломалась' className="modal-img"/>
+  < img src = {img} alt='Обложка поломалась' className="modal-img"/>
   <span className="bigger-stuff">{`Автор: ${selectedAuthour}`} </span>
   <span className="bigger-stuff">{`Год публикации: ${selectedYear}`} </span>
   <span> {text}
   </span>
+ </div>
  </div>
 )
 }

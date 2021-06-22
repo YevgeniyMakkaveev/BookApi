@@ -1,24 +1,49 @@
+
+
 .modal-body{
- display: flex;
- width: 600px;
- height: 600px;
- float: right;
- flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    animation-name: appear;
+    animation-duration: 300ms;
+}
+.modal-card {
+  display: flex;
+  width: 70%;
+  height: auto;
+  background: #ddbea9;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 0.5rem 1rem 1rem;
   letter-spacing: 0.5px;
+  overflow: hidden;
 }
 
-
+.modal-img{
+  float: left;
+  height: 15%;
+  width: 15%;
+}
 .bigger-stuff {
  font-weight: bold;
  font-size: calc(0.8em + 0.8vw);
 }
 
 .text-test{
- 
- font-size: calc(0.8em + 0.8vw);
+ display: flex;
+ font-size: calc(0.5em + 0.5vw);
      margin-top: 4rem;
      text-align: left;
+     
 }
