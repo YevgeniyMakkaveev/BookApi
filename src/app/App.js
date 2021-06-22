@@ -13,6 +13,8 @@ export default class App extends Component {
    searchField: '',
    selectedId: null,
    showModal: false,
+   selectedAuthour: null,
+   selectedYear: null,
    error: false
   }
   this.showModal=this.showModal.bind(this)
@@ -35,9 +37,11 @@ export default class App extends Component {
     console.log('обновлен поиск')
   }
 
-getBookId=(res)=>{
+getBookId=(resId, resName, resYear)=>{
   this.setState({
-        selectedId: res  })
+        selectedId: resId,
+        selectedAuthour: resName,
+        selectedYear: resYear})
       console.log('получено id книги')}
 
 
@@ -47,12 +51,10 @@ getBookId=(res)=>{
 //  const renderModal =showModal? <Modal/>:null
     
   return (  
-      <div>
-        <SearchPannel  getSearchRes={this.getSearchRes} />
-        <button onClick={()=>console.log(this.state)}> Покажись стейт</button>
-        
+      <div className="App">
+        <SearchPannel  getSearchRes={this.getSearchRes} /> 
         <BookCard getBookId={this.getBookId} searchField={this.state.searchField}/>
-        <Modal seletedBook={this.state.selectedId}/>
+        <Modal seletedBook={this.state.selectedId} selectedAuthour={this.state.selectedAuthour} selectedYear={this.state.selectedYear}/>
       
       </div>
       

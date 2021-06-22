@@ -38,11 +38,12 @@ export default class Modal extends Component {
     }
 
     render() {
-      if (!this.state.book) {
-       return <span className = "modal-body" > грузка </span>
-      }
+      if (!this.props.seletedBook) {
+       return <span className = "text-test" > Выберете книгу </span>
+      } else if(!this.state.book){return <span className = "modal-body" > Идет загрузка </span> }
 
 const { description,covers, title} = this.state.book
+const{selectedAuthour, selectedYear} = this.props
 let text = this.checkValue(description)
 const img = covers[0]
 console.log(covers)
@@ -50,7 +51,9 @@ console.log(covers)
 return(
  <div className="modal-body">
   <h2>{title}</h2>
-  < img src = {`http://covers.openlibrary.org/b/id/${img}-M.jpg`}alt='Обложка поломалась'/> 
+  < img src = {`http://covers.openlibrary.org/b/id/${img}-L.jpg`}alt='Обложка поломалась' className="modal-img"/>
+  <span className="bigger-stuff">{`Автор: ${selectedAuthour}`} </span>
+  <span className="bigger-stuff">{`Год публикации: ${selectedYear}`} </span>
   <span> {text}
   </span>
  </div>

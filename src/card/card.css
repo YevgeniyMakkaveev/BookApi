@@ -1,11 +1,47 @@
-.cards-nest{
-flex: 2;
- flex-direction: column;
+
+.cards-nest {
+margin-top: 2rem;
+display: block;
  float: left;
- width: 500px;
+ max-width: 1500px;
+
+font-family: 'fantasy', sans-serif;
+color: #343a40;
+background-size: auto
 }
 .single-card{
-  margin: 5px;
-  border: solid;
-  border-color: black 2px;
+   
+  max-width: 800px;
+  max-height: 150px;
+  background-color: #ddbea9;
+   border-radius: 20px;
+   justify-content: flex-start;
+  display: flex;
+  padding: 2rem;
+  margin: 0 1.5rem;
+  margin-bottom: 2rem;
+   box-shadow: 0 5px 10px rgba(54, 47, 3, 0.05),
+   0 15px 40px rgba(0, 0, 0, 0.1);
 }
+.card-img{
+  border: bisque, solid;
+  max-height: 125px;
+}
+
+.content-table {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 0;
+    margin-left: 5rem;
+  }
+
+  .selector{
+    font-size: calc(0.8em + 0.8vw);
+    display: block;
+    float: left;
+    text-align: left;
+  }
+
+  

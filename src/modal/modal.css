@@ -1,13 +1,24 @@
 .modal-body{
- flex:1;
+ display: flex;
  width: 600px;
  height: 600px;
  float: right;
+ flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
 }
 
-.box{
- height: 300px;
- width: 300px;
+
+.bigger-stuff {
+ font-weight: bold;
+ font-size: calc(0.8em + 0.8vw);
+}
+
+.text-test{
  
- background-color: aqua;
+ font-size: calc(0.8em + 0.8vw);
+     margin-top: 4rem;
+     text-align: left;
 }

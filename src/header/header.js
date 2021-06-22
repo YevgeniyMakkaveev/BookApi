@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './header.css'
+
 
 export default class SearchPannel extends Component {
 
@@ -27,9 +29,12 @@ this.setState({
 render() {
   const {tearm} = this.state;
  return(
-           <div >
-               <input  type="text" onChange={this.onImput} value={tearm}/>
-               <input className="button" type="submit" onClick={this.onSubmit} value="Искать книги"/>
+           <div className="header">
+             <h1 className="title"> КНИЖКА API-ШКА</h1>
+               <div className="search-block">
+               <input  type="text" className="text-field" onChange={this.onImput} value={tearm}/>
+               <input className="submit-button" type="submit" onClick={this.onSubmit} value="Искать книги"/>
+               </div>
            </div>
   )
 }
