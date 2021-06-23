@@ -1,0 +1,9 @@
+body{
+ background-color: #fff1e6;
+ background-size: cover;
+ height: '100vh';
+  min-height : '100vh';
+ font-family: 'fantasy', sans-serif;
+ color: #343a40;
+ font-size:calc(0.7em + 0.7vw);
+}
