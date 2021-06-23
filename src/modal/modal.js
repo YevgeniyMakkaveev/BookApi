@@ -55,9 +55,9 @@ export default class Modal extends Component {
 
 
     render() {
-        if (!this.props.seletedBook || !this.state.visible) {
+        if (!this.props.seletedBook && !this.state.visible) {
             return null
-        } else if (!this.state.book) { return <Spinner /> }
+        } else if (!this.state.book) { return <div className="test"><Spinner /></div> }
 
         const { description, covers, title } = this.state.book
         const { selectedAuthour, selectedYear, selectedISBN } = this.props

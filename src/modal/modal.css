@@ -16,6 +16,8 @@
 .test{
    position: absolute;
   vertical-align: middle;
+  top: 50%;
+  left: 50%;
 }
 
 .modal-card {
@@ -36,6 +38,7 @@
   overflow: hidden;
   text-overflow: clip;
 }
+
 
 .wrapper {
   display: flex;

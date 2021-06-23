@@ -62,7 +62,10 @@
  transform: translateZ(0) scale(1);
  backface-visibility: hidden;
  transform-origin: 0 0;
- /* see note above */
+ position: absolute;
+ align-self: center;
+ vertical-align: middle;
+ z-index: 999999
 }
 
 .ldio-4q93eu97sb div {
