@@ -13,8 +13,7 @@ export default class App extends Component {
    searchField: '',
    selectedId: null,
    selectedAuthour: null,
-   showModal: false,
-   selectedYear: null,
+    selectedYear: null,
    error: false
   }
   this.showModal=this.showModal.bind(this)
@@ -43,8 +42,7 @@ getBookId=(resId, resName, resYear)=>{
         selectedId: resId,
         selectedAuthour: resName,
         selectedYear: resYear,
-        showModal: true
-      })
+              })
       console.log('получено id книги')}
 
 

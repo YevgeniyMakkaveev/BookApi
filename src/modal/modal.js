@@ -36,9 +36,9 @@ export default class Modal extends Component {
      if (!item) {
       return "Нет описания"
      } else if (item.value) {
-      return item.value
+      return this.notTooMuch(item.value, 500)
      } else {
-      return item
+      return this.notTooMuch(item, 500)
      }
     }
 
@@ -51,6 +51,15 @@ export default class Modal extends Component {
         this.setState({visible: false})
         this.props.onHide()
     }
+    notTooMuch=(text, limit)=>{
+  text = text.trim();
+  if( text.length <= limit) return text;
+
+  text = text.slice(0, limit);
+
+  return text.trim() + "...";
+}
+
     render() {
       if (!this.props.seletedBook || !this.state.visible) {
        return null
@@ -65,10 +74,17 @@ console.log(covers)
 return(
     <div className="modal-body" onClick={()=>{this.hideModal()}} >
  <div className="modal-card" >
-  <h2>{title}</h2>
+  <h1>  {title}</h1>
+<div className="wrapper">
   < img src = {img} alt='Обложка поломалась' className="modal-img"/>
+  <ul><li>
   <span className="bigger-stuff">{`Автор: ${selectedAuthour}`} </span>
+  </li>
+  <li>
   <span className="bigger-stuff">{`Год публикации: ${selectedYear}`} </span>
+  </li>
+  </ul>
+  </div>
   <span> {text}
   </span>
  </div>
