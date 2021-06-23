@@ -1,5 +1,6 @@
 .header{
  background:url('../img/book.jpg') ;
+margin-top: .5rem;
 }
 
 .title{
@@ -16,20 +17,26 @@
 }
 .submit-button{
 padding: 1.5rem 1.5rem;
-background-color:white;
-border-radius: 55%;
-background:coral ;
-border: blanchedalmond 4px;
-color: black;
-  box-shadow: 0 5px 4px rgba(100, 107, 3, 0.05),
-  0 5px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin:  1rem;
+	color: #fff !important;
+	text-transform: uppercase;
+  font-size: large;
+  border-radius: 60%;
+	text-decoration: none;
+	background: coral;
+	border-radius: 5px;
+	display: inline-block;
+  border: black;
+	transition: all 0.4s ease 0s;
 }
 
 .submit-button:hover{
-color: #ffffff ;
-background: red;
+	background: red;
+  border-radius: 40%;
+	letter-spacing: 0.3em;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+	transition: all 0.4s ease 0s;
 }
 
 .text-field{

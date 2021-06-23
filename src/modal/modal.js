@@ -8,7 +8,8 @@ export default class Modal extends Component {
     getBook = new GetBooks()
     state = {
         book: null,
-        visible: true
+        visible: false,
+        
     }
 
 
@@ -26,9 +27,9 @@ export default class Modal extends Component {
         if (!seletedBook) {
             return
         }
-        this.setState({ visible: true })
+        this.setState({ visible: true})
         this.getBook.getSingleBook(seletedBook).then((book) => {
-            this.setState({ book: book })
+            this.setState({ book: book, loading: false  })
         })
         console.log(this.state.book)
     }
@@ -37,9 +38,9 @@ export default class Modal extends Component {
         if (!item) {
             return "Нет описания"
         } else if (item.value) {
-            return this.notTooMuch(item.value, 500)
+            return item.value
         } else {
-            return this.notTooMuch(item, 500)
+            return item
         }
     }
 
@@ -49,22 +50,15 @@ export default class Modal extends Component {
 
     }
     hideModal = () => {
-        this.setState({ visible: false })
+        this.setState({ visible: false, book: null })
         this.props.onHide()
     }
-    notTooMuch = (text, limit) => {
-        text = text.trim();
-        if (text.length <= limit) return text;
 
-        text = text.slice(0, limit);
-
-        return text.trim() + "...";
-    }
 
     render() {
         if (!this.props.seletedBook || !this.state.visible) {
             return null
-        } else if (!this.state.book) { return <Spinner /> }
+        } else if (!this.state.book) { return <div className="test"><Spinner/></div> }
 
         const { description, covers, title } = this.state.book
         const { selectedAuthour, selectedYear, selectedISBN } = this.props

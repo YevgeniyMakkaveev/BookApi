@@ -48,7 +48,7 @@ export default class SearchPannel extends Component {
         < h1 className="title" > КНИЖКА API-ШКА </h1>
         <div className="search-block">
           <input type="text" className="text-field" onChange={this.onImput} value={tearm} />
-          <input className="submit-button" type="submit" onClick={this.onSubmit} value="Искать книги" />
+          <input className="submit-button" type="submit" onClick={this.onSubmit} value="Поиск" />
         </div>
       </div>
     )
