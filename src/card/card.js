@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GetBooks from '../services/getBook'
 import './card.css'
 import Spinner from '../spinner'
-import deafaultImg from '../img/book-template.jpg'
+import deafaultImg from '../img/book-template.png'
 
 
 export default class BookCard extends Component {
@@ -24,7 +24,7 @@ export default class BookCard extends Component {
   updateBook() {
     const { searchField } = this.props
     if (!searchField) { return }
-    this.setState({bookList: null})
+    this.setState({ bookList: null })
     this.getBook.getSearchRes(searchField).then((bookList) => { this.setState({ bookList: bookList.docs }) }
     )
   }
@@ -33,20 +33,19 @@ export default class BookCard extends Component {
     else return (deafaultImg)
   }
 
-    notTooMuch = (text, limit) => {
-        text = text.trim();
-        if (text.length <= limit) return text;
+  notTooMuch = (text, limit) => {
+    text = text.trim();
+    if (text.length <= limit) return text;
 
-        text = text.slice(0, limit);
+    text = text.slice(0, limit);
 
-        return text.trim() + "...";
-    }
+    return text.trim() + "...";
+  }
   renderIt = (arr) => {
-    console.log('Идет рендер')
     if (!arr) return (`Ничего не найдено`)
     else
       return (arr.map((item) => {
-        const shownTitle= this.notTooMuch(item.title, 20)
+        const shownTitle = this.notTooMuch(item.title, 20)
         const originalName = item.author_name ? item.author_name.toString() : "Не нашлось"
         const ShownName = this.notTooMuch(originalName, 20)
         const isbn = item.isbn ? item.isbn[(item.isbn.length - 1)] : "Не нашлось"
@@ -71,7 +70,7 @@ export default class BookCard extends Component {
 
 
   render() {
-    
+
     if (!this.props.searchField) {
       return null
     } else if (!this.state.bookList) { return <Spinner /> }

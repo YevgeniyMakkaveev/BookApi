@@ -34,12 +34,10 @@ export default class App extends Component {
       selectedYear: null,
       selectedISBN: null,
     })
-    console.log(() => this.state)
   }
 
   getSearchRes = (res) => {
     this.setState({ searchField: res })
-    console.log('обновлен поиск')
   }
 
   getBookId = (resId, resName, resYear, resISBN) => {
@@ -49,7 +47,6 @@ export default class App extends Component {
       selectedYear: resYear,
       selectedISBN: resISBN
     })
-    console.log('получено id книги')
   }
 
   render() {

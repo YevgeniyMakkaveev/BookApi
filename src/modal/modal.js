@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import GetBooks from '../services/getBook';
 import './modal.css'
 import Spinner from '../spinner/';
-import deafaultImg from '../img/book-template.jpg'
+import deafaultImg from '../img/book-template.png'
 
 export default class Modal extends Component {
     getBook = new GetBooks()
     state = {
         book: null,
         visible: false,
-        
+
     }
 
 
@@ -27,11 +27,10 @@ export default class Modal extends Component {
         if (!seletedBook) {
             return
         }
-        this.setState({ visible: true})
+        this.setState({ visible: true })
         this.getBook.getSingleBook(seletedBook).then((book) => {
-            this.setState({ book: book, loading: false  })
+            this.setState({ book: book, loading: false })
         })
-        console.log(this.state.book)
     }
 
     checkValue(item) {
@@ -58,14 +57,13 @@ export default class Modal extends Component {
     render() {
         if (!this.props.seletedBook || !this.state.visible) {
             return null
-        } else if (!this.state.book) { return <div className="test"><Spinner/></div> }
+        } else if (!this.state.book) { return <Spinner /> }
 
         const { description, covers, title } = this.state.book
         const { selectedAuthour, selectedYear, selectedISBN } = this.props
         let text = this.checkValue(description)
         const img = this.checkImg(covers)
-        console.log(covers)
-
+       
         return (
             <div className="modal-body" onClick={() => { this.hideModal() }} >
                 <div className="modal-card" >

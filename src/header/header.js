@@ -23,9 +23,7 @@ export default class SearchPannel extends Component {
       }
     }, 1000);
   }
-  testTimer = () => {
-    console.log('Тест')
-  }
+
   componentWillUnmount() {
     clearTimeout(this.typingTimer);
   }
@@ -38,7 +36,6 @@ export default class SearchPannel extends Component {
         tearm: ''
       })
     }
-
   }
 
   render() {
