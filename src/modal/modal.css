@@ -14,10 +14,15 @@
   animation-duration: 300ms;
 }
 .test{
-   position: absolute;
-  vertical-align: middle;
-  top: 50%;
-  left: 50%;
+position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+vertical-align: middle;
+align-content: center;
+width: auto;
+z-index: 9999;
 }
 
 .modal-card {
