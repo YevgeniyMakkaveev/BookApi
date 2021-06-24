@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
  background-color: #fff1e6;
  background-size: cover;
@@ -6,4 +7,14 @@ body{
  font-family: 'fantasy', sans-serif;
  color: #343a40;
  font-size:calc(0.7em + 0.7vw);
+=======
+body{
+ background-color: #fff1e6;
+ background-size: cover;
+ height: '100vh';
+  min-height : '100vh';
+ font-family: 'fantasy', sans-serif;
+ color: #343a40;
+ font-size:calc(0.7em + 0.7vw);
+>>>>>>> 83e2cde053fa9af6622c3510cb260f39d3c0caf8
 }
