@@ -16,7 +16,7 @@ export default class App extends Component {
       selectedAuthour: null,
       selectedYear: null,
       selectedISBN: null,
-      error: false
+      
     }
     this.hideModal = this.hideModal.bind(this)
     this.getSearchRes = this.getSearchRes.bind(this)
@@ -54,10 +54,9 @@ export default class App extends Component {
 
     return (
       <div className="App">
+        < ErrorBoundary >
         <SearchPannel getSearchRes={this.getSearchRes} />
-        <ErrorBoundary>
         <BookCard getBookId={this.getBookId} searchField={this.state.searchField} onError={this.onError}/>
-
         <Modal seletedBook={this.state.selectedId} selectedAuthour={this.state.selectedAuthour} selectedYear={this.state.selectedYear} selectedISBN={this.state.selectedISBN} onHide={this.hideModal} onError={this.onError}/>
         </ErrorBoundary>
       </div>

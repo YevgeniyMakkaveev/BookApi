@@ -47,7 +47,7 @@ export default class BookCard extends Component {
       return (arr.map((item) => {
         const shownTitle = this.notTooMuch(item.title, 20)
         const originalName = item.author_name ? item.author_name.toString() : "Не нашлось"
-        const ShownName = this.notTooMuch(originalName, 20)
+        const shownName = this.notTooMuch(originalName, 20)
         const isbn = item.isbn ? item.isbn[(item.isbn.length - 1)] : "Не нашлось"
         const img = this.checkImg(item.cover_edition_key)
         return (<div key={item.key} className="single-card" onClick={() => this.props.getBookId(item.key, originalName, item.first_publish_year, isbn)}>
@@ -57,7 +57,7 @@ export default class BookCard extends Component {
               <span> {`Название книги:  ${shownTitle}`}</span>
             </li>
             <li>
-              <span> {`Имена авторов:  ${ShownName}`} </span>
+              <span> {`Имена авторов:  ${shownName}`} </span>
             </li>
             <li>
               <span> {`Год издания: ${item.first_publish_year}`} </span>
